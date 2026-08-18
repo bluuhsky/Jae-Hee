@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jae Hee ♡ Discord Profile</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Outfit:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #070a12;
+            --bg-card: rgba(13, 20, 36, 0.65);
+            --bg-card-hover: rgba(22, 33, 58, 0.8);
+            --accent-blue: #4f90ff;
+            --accent-glow: #00d2ff;
+            --pastel-blue: #a0c4ff;
+            --light-blue: #d0e1fd;
+            --text-main: #f0f6ff;
+            --text-sub: #8ea8d2;
+            --dnd-red: #f23f43;
+            --glass-border: rgba(160, 196, 255, 0.15);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 10, 30, 0.37);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Quicksand', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e2c4a;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-blue);
+        }
+
+        /* --- LOADING SCREEN --- */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #04060d;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        #loader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+            position: relative;
+        }
+
+        .spinner {
+            width: 70px;
+            height: 70px;
+            border: 3px solid rgba(79, 144, 255, 0.1);
+            border-top: 3px solid var(--accent-glow);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.3);
+        }
+
+        .loader-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #ffffff, var(--pastel-blue), var(--accent-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0;
+            animation: fadeInText 1.5s ease forwards 0.3s;
+        }
+
+        .loader-sub {
+            color: var(--text-sub);
+            font-size: 0.9rem;
+            margin-top: 8px;
+            letter-spacing: 1px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeInText {
+            to { opacity: 1; }
+        }
+
+        /* --- BACKGROUND CANVAS --- */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            pointer-events: none;
+        }
+
+        .bg-overlay {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at 50% 20%, rgba(15, 25, 50, 0.5) 0%, rgba(7, 10, 18, 0.85) 100%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* --- MAIN LAYOUT --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px 140px 20px;
+            position: relative;
+        }
+
+        /* --- DISCORD PROFILE CARD --- */
+        .profile-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--glass-shadow), 0 0 30px rgba(79, 144, 255, 0.1);
+            margin-bottom: 40px;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .profile-card:hover {
+            box-shadow: var(--glass-shadow), 0 0 40px rgba(0, 210, 255, 0.2);
+        }
+
+        .banner-container {
+            height: 200px;
+            width: 100%;
+            position: relative;
+            background: linear-gradient(135deg, #101935, #1e2a4a);
+            overflow: hidden;
+        }
+
+        .banner-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.85;
+            filter: brightness(0.9) contrast(1.1);
+        }
+
+        .avatar-wrapper {
+            position: absolute;
+            left: 30px;
+            top: 130px;
+            z-index: 10;
+        }
+
+        .avatar-frame {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            position: relative;
+            padding: 5px;
+            background: linear-gradient(135deg, var(--accent-glow), var(--accent-blue), #101935);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.5);
+            animation: pulseGlow 4s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 15px rgba(0, 210, 255, 0.4); }
+            100% { box-shadow: 0 0 25px rgba(160, 196, 255, 0.8); }
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #0d1424;
+            display: block;
+        }
+
+        .status-badge {
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            width: 26px;
+            height: 26px;
+            background-color: var(--dnd-red);
+            border-radius: 50%;
+            border: 4px solid #0b1120;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .status-dnd-inner {
+            width: 10px;
+            height: 3px;
+            background-color: #ffffff;
+            border-radius: 2px;
+        }
+
+        .profile-body {
+            padding: 55px 30px 30px 30px;
+            position: relative;
+        }
+
+        .badge-row {
+            display: flex;
+            gap: 8px;
+            position: absolute;
+            top: 15px;
+            right: 30px;
+            background: rgba(7, 10, 18, 0.6);
+            padding: 6px 12px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .discord-badge {
+            font-size: 1.1rem;
+            color: var(--pastel-blue);
+            cursor: pointer;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .discord-badge:hover {
+            transform: scale(1.2);
+            color: var(--accent-glow);
+        }
+
+        .user-header {
+            margin-bottom: 20px;
+        }
+
+        .display-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .username {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            margin-top: 2px;
+        }
+
+        /* --- ANIMATED BIO --- */
+        .bio-box {
+            background: rgba(7, 10, 18, 0.5);
+            border: 1px solid rgba(160, 196, 255, 0.1);
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bio-text {
+            font-family: 'Quicksand', monospace;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--light-blue);
+            white-space: pre-line;
+            position: relative;
+            z-index: 2;
+        }
+
+        .glowing-heart {
+            color: #72f2ff;
+            text-shadow: 0 0 8px rgba(0, 210, 255, 0.8), 0 0 15px rgba(0, 210, 255, 0.5);
+            animation: heartFloat 3s ease-in-out infinite alternate;
+            display: inline-block;
+        }
+
+        .floating-char {
+            display: inline-block;
+            animation: floatChar 3s ease-in-out infinite alternate;
+            color: var(--pastel-blue);
+        }
+
+        @keyframes heartFloat {
+            0% { transform: translateY(0) scale(1); filter: brightness(1); }
+            100% { transform: translateY(-3px) scale(1.1); filter: brightness(1.3); }
+        }
+
+        @keyframes floatChar {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-4px); }
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tag-pill {
+            background: linear-gradient(135deg, rgba(79, 144, 255, 0.15), rgba(0, 210, 255, 0.08));
+            border: 1px solid rgba(160, 196, 255, 0.25);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.88rem;
+            color: var(--light-blue);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        .tag-pill:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-glow);
+            box-shadow: 0 0 12px rgba(0, 210, 255, 0.4);
+            color: #ffffff;
+        }
+
+        /* --- SECTION HEADERS --- */
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--light-blue);
+            margin: 40px 0 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 0 0 10px rgba(79, 144, 255, 0.3);
+        }
+
+        .section-title span {
+            color: var(--accent-glow);
+        }
+
+        /* --- ARTISTS SECTION --- */
+        .artists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .artist-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 15px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .artist-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 210, 255, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 150, 255, 0.2);
+        }
+
+        .artist-card.active {
+            border-color: var(--accent-glow);
+            background: rgba(22, 40, 75, 0.85);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+        }
+
+        .artist-thumb-wrapper {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 12px auto;
+            border-radius: 50%;
+            padding: 3px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), var(--accent-blue));
+            transition: transform 0.3s ease;
+        }
+
+        .artist-card:hover .artist-thumb-wrapper {
+            transform: scale(1.05);
+        }
+
+        .artist-thumb {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .artist-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .artist-genre {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+        }
+
+        /* Song List Panel */
+        .songs-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 20px;
+            backdrop-filter: blur(12px);
+            margin-bottom: 40px;
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .songs-panel.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .songs-header {
+            font-size: 1.1rem;
+            color: var(--pastel-blue);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(160, 196, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .song-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 10px;
+        }
+
+        .song-item {
+            background: rgba(7, 10, 18, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 0.92rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.2s ease;
+            animation: fadeInSong 0.3s ease forwards;
+        }
+
+        .song-item:hover {
+            background: rgba(79, 144, 255, 0.15);
+            border-color: rgba(0, 210, 255, 0.3);
+            transform: translateX(4px);
+        }
+
+        .song-num {
+            color: var(--accent-glow);
+            font-size: 0.8rem;
+            font-weight: 700;
+            width: 20px;
+        }
+
+        @keyframes fadeInSong {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- POLAROID ANIME SCRAPBOOK --- */
+        .polaroid-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+            padding: 10px 5px;
+        }
+
+        .polaroid-card {
+            background: #eef5ff;
+            padding: 12px 12px 20px 12px;
+            border-radius: 6px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+
+        /* Rotations for natural scrapbook feel */
+        .polaroid-card:nth-child(odd) { transform: rotate(-2.5deg); }
+        .polaroid-card:nth-child(even) { transform: rotate(2deg); }
+        .polaroid-card:nth-child(3n) { transform: rotate(-1deg); }
+
+        .polaroid-card:hover {
+            transform: scale(1.08) rotate(0deg) !important;
+            z-index: 20;
+            box-shadow: 0 15px 30px rgba(0, 210, 255, 0.3);
+        }
+
+        .polaroid-card.active {
+            transform: scale(1.05) rotate(0deg) !important;
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.6);
+            z-index: 20;
+        }
+
+        .polaroid-img-box {
+            width: 100%;
+            height: 180px;
+            overflow: hidden;
+            border-radius: 4px;
+            background: #101524;
+        }
+
+        .polaroid-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .polaroid-card:hover .polaroid-img {
+            transform: scale(1.1);
+        }
+
+        .polaroid-caption {
+            font-family: 'Caveat', cursive;
+            color: #1a2536;
+            font-size: 1.25rem;
+            text-align: center;
+            margin-top: 10px;
+            font-weight: 700;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Anime Plot Details Box */
+        .anime-plot-box {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            padding: 22px;
+            backdrop-filter: blur(14px);
+            margin-bottom: 40px;
+            display: none;
+            animation: unfoldPaper 0.4s ease forwards;
+            box-shadow: var(--glass-shadow);
+        }
+
+        @keyframes unfoldPaper {
+            0% { opacity: 0; transform: scaleY(0.8); }
+            100% { opacity: 1; transform: scaleY(1); }
+        }
+
+        .anime-plot-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            color: var(--accent-glow);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .anime-plot-desc {
+            font-size: 0.98rem;
+            line-height: 1.6;
+            color: var(--light-blue);
+        }
+
+        /* --- FAVORITE GAMES --- */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .game-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        .game-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-glow);
+            box-shadow: 0 5px 15px rgba(0, 210, 255, 0.25);
+            background: rgba(20, 35, 65, 0.7);
+        }
+
+        .game-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-glow));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+            flex-shrink: 0;
+        }
+
+        .game-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+
+        /* --- SOCIAL MEDIA SECTION --- */
+        .socials-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-bottom: 20px;
+        }
+
+        .social-btn {
+            width: 55px;
+            height: 55px;
+            border-radius: 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--pastel-blue);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(8px);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            color: #ffffff;
+            border-color: var(--accent-glow);
+        
