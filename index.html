@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07132b">
+<title>Jae Hee — bluuh ♡</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="intro" class="intro">
+  <div class="intro-stars"></div>
+  <div class="intro-card">
+    <div class="orb">✦</div>
+    <p class="system-label">WORLD VOICE // INITIALIZING</p>
+    <h1 id="welcomeText">Connecting to Jae Hee's world…</h1>
+    <p id="introSub">A small blue universe is opening.</p>
+    <button id="enterBtn" class="enter hidden">ENTER THE WORLD ♡</button>
+  </div>
+</div>
+
+<div class="bg-video-wrap">
+  <!-- Optional: replace background.mp4 with your own anime/video file. -->
+  <video id="bgVideo" autoplay muted loop playsinline>
+    <source src="assets/background.mp4" type="video/mp4">
+  </video>
+  <div class="bg-overlay"></div>
+</div>
+<div id="particles"></div>
+
+<main id="site" class="site hidden">
+  <header class="hero glass">
+    <div class="banner" style="background-image:url('https://i.pinimg.com/originals/00/00/00/00/0000000000000000.jpg')"></div>
+    <div class="profile-row">
+      <div class="avatar-wrap">
+        <img id="avatar" class="avatar" src="https://i.pinimg.com/originals/00/00/00/00/0000000000000000.jpg" alt="Jae Hee avatar">
+        <span class="status" title="Do Not Disturb"></span>
+      </div>
+      <div class="identity">
+        <h2>Jae Hee <span class="sparkle">✦</span></h2>
+        <p class="handle">bluuh · infp · 2002</p>
+      </div>
+    </div>
+    <div class="bio">
+      <div class="bio-art">:¨ ·.· ¨:<br><span>`· . bluuh .ᐟ</span></div>
+      <div class="bio-main">➤ 2002　ֵ⑅　c'est la vie ♡</div>
+      <div class="tags"><span>anime lover ✦</span><span>R&B lover ♪</span><span>avid Wattpad reader ♡</span></div>
+    </div>
+  </header>
+
+  <section class="section glass">
+    <div class="section-title"><span>「 my artists ♡ 」</span><small>tap an artist</small></div>
+    <div id="artists" class="artist-grid"></div>
+    <div id="artistSongs" class="songs-panel empty">Choose an artist to reveal their songs ✦</div>
+  </section>
+
+  <section class="section glass">
+    <div class="section-title"><span>「 anime i've watched ♡ 」</span><small>open a polaroid</small></div>
+    <div id="animeGrid" class="polaroid-grid"></div>
+    <div id="animeInfo" class="anime-info empty">Pick an anime and open a little scrapbook page ✧</div>
+  </section>
+
+  <section class="section glass">
+    <div class="section-title"><span>「 little games ♡ 」</span></div>
+    <div id="games" class="games-grid"></div>
+  </section>
+
+  <section class="section glass">
+    <div class="section-title"><span>「 find me in other worlds ♡ 」</span><small>tap an icon</small></div>
+    <div id="socials" class="social-grid"></div>
+  </section>
+
+  <footer>made with blue sparkles by Jae Hee ♡</footer>
+</main>
+
+<div id="player" class="player glass">
+  <div class="cover">♪</div>
+  <div class="track">
+    <strong>Tabun</strong><span>YOASOBI</span>
+    <div class="fake-wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </div>
+  <button id="playBtn" aria-label="Play or pause">▶</button>
+  <div class="progress"><span></span></div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
